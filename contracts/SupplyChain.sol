@@ -42,11 +42,6 @@ contract SupplyChain {
    * Modifiers
    */
 
-  modifier paidEnough(uint _price) { 
-    // require(msg.value >= _price); 
-    _;
-  }
-
   modifier checkValue(uint sku, uint value) {
     uint change = value > items[sku].price ? value.sub(items[sku].price) : 0;
     if (change > 0) {
@@ -87,9 +82,7 @@ contract SupplyChain {
   }
 
   constructor() public {
-    // 1. Set the owner to the transaction sender
     owner = msg.sender;
-    // 2. Initialize the sku count to 0. Question, is this necessary?
     skuCount = 0;
   }
 
